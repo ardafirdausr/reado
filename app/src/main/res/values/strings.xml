@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">READo</string>
+    <string name="get_words">Get Words</string>
+    <string name="run_quiz">Run Quiz</string>
+    <string name="powered_by">Powered By</string>
+
+    <!--asset name-->
+    <string name="neptune">Neptune</string>
+    <string name="ferris_wheel">Ferris Wheel</string>
+    <string name="ballon">Ballon</string>
+    <string name="choose_word">Choose Word!</string>
+    <string name="boom">Boom</string>
+    <string name="rides">Rides</string>
+    <string name="logo">Logo</string>
+    <string name="sound">Sound</string>
+
+    <!--alphabet pronounciation-->
+    <string-array name="alphabets">
+        <item>ei</item>
+        <item>bi:</item>
+        <item>si:</item>
+        <item>di:</item>
+        <item>i:</item>
+        <item>ef:</item>
+        <item>dʒi:</item>
+        <item>eitʃ</item>
+        <item>ai</item>
+        <item>dʒei</item>
+        <item>kei</item>
+        <item>el</item>
+        <item>em</item>
+        <item>en</item>
+        <item>o</item>
+        <item>pi:</item>
+        <item>kju:</item>
+        <item>ar</item>
+        <item>es</item>
+        <item>ti:</item>
+        <item>ju:</item>
+        <item>vi:</item>
+        <item>‘dʌəlju:</item>
+        <item>eks</item>
+        <item>wai</item>
+        <item>zi</item>
+    </string-array>
+
+    <!--numeric pronounciation-->
+    <string-array name="numerics">
+        <item>zero</item>
+        <item>one</item>
+        <item>two</item>
+        <item>three</item>
+        <item>four</item>
+        <item>five</item>
+        <item>six</item>
+        <item>seven</item>
+        <item>eight</item>
+        <item>nine</item>
+        <item>ten</item>
+    </string-array>
+
+</resources>

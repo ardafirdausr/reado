@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">READo</string>
+    <string name="get_words">Dapatkan Kata</string>
+    <string name="run_quiz">Mulai Kuis</string>
+    <string name="powered_by">Didukung Oleh</string>
+
+    <!--asset name-->
+    <string name="neptune">Neptune</string>
+    <string name="ferris_wheel">Ferris Wheel</string>
+    <string name="ballon">Ballon</string>
+    <string name="choose_word">Pilih Kata!</string>
+    <string name="boom">Boom</string>
+    <string name="rides">Wahana</string>
+    <string name="logo">Logo</string>
+    <string name="sound">Suara</string>
+
+    <!--alphabet pronounciation-->
+    <string-array name="alphabets">
+        <item>a</item>
+        <item>bé</item>
+        <item>cé</item>
+        <item>dé</item>
+        <item>é</item>
+        <item>éf</item>
+        <item>gé</item>
+        <item>ha</item>
+        <item>i</item>
+        <item>jé</item>
+        <item>ka</item>
+        <item>él</item>
+        <item>ém</item>
+        <item>én</item>
+        <item>o</item>
+        <item>pé</item>
+        <item>ki</item>
+        <item>ér</item>
+        <item>és</item>
+        <item>té</item>
+        <item>u</item>
+        <item>vé</item>
+        <item>wé</item>
+        <item>éks</item>
+        <item>yé</item>
+        <item>zét</item>
+    </string-array>
+
+    <!--numeric pronounciation-->
+    <string-array name="numerics">
+        <item>nol</item>
+        <item>satu</item>
+        <item>dua</item>
+        <item>tiga</item>
+        <item>empat</item>
+        <item>lima</item>
+        <item>enam</item>
+        <item>tujuh</item>
+        <item>delapan</item>
+        <item>sembilan</item>
+        <item>sepuluh</item>
+    </string-array>
+</resources>
