@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#17b5fc"
+    android:background="@drawable/bgapp"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnGetWords"
         android:layout_width="184dp"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/btn_photo"
         android:text="@string/get_words"
         android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
@@ -24,13 +25,14 @@
     <Button
         android:id="@+id/btnRunQuiz"
         android:layout_width="184dp"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/btn_start"
         android:text="@string/run_quiz"
         android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGetWords" />

@@ -2,6 +2,7 @@ package me.ardafirdausr.reado.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
     Context context;
     ArrayList<String> words;
     TextToSpeech tts;
+    Typeface typeface;
 
     public WordAdapter() { super(); }
 
@@ -35,6 +37,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
     @Override
     public WordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         this.context = parent.getContext();
+
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_word_card, parent, false);
         itemView.getLayoutParams().width = (int) (parent.getMeasuredHeight() * 1);
         itemView.requestLayout();
@@ -84,8 +87,13 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
 
         public WordViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            typeface =  Typeface.createFromAsset(context.getAssets(), "font/FredokaOneRegular.ttf");
+
             this.word = (TextView) itemView.findViewById(R.id.txtWord);
             this.btnSound = (Button) itemView.findViewById(R.id.btnSound);
+
+            this.word.setTypeface(typeface);
         }
     }
 }

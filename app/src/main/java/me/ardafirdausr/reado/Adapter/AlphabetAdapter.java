@@ -1,6 +1,7 @@
 package me.ardafirdausr.reado.Adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +25,7 @@ public class AlphabetAdapter extends  RecyclerView.Adapter<AlphabetAdapter.Alpha
     String[] alphabetPronounce;
     String[] numericPronounce;
     TextToSpeech tts;
+    Typeface typeface;
 
     public AlphabetAdapter() { super(); }
 
@@ -85,9 +87,15 @@ public class AlphabetAdapter extends  RecyclerView.Adapter<AlphabetAdapter.Alpha
 
         public AlphabetViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            typeface =  Typeface.createFromAsset(context.getAssets(), "font/FredokaOneRegular.ttf");
+
             txtAlphabet = itemView.findViewById(R.id.txtAlphabet);
             txtRead = itemView.findViewById(R.id.txtRead);
             btnSound = itemView.findViewById(R.id.btnSound);
+
+            txtAlphabet.setTypeface(typeface);
+            txtRead.setTypeface(typeface);
         }
     }
 }

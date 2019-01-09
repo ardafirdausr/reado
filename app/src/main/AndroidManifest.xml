@@ -22,7 +22,15 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".TextScannerActivity" />
         <activity android:name=".WordActivity" />
-        <activity android:name=".AlphabetActivity"></activity>
+        <activity android:name=".AlphabetActivity" />
+        <activity android:name=".FunQuizActivity" />
+        <activity android:name=".Level1Activity" />
+        <activity android:name=".Level2Activity" />
+        <activity android:name=".LevelOne" />
+        <activity android:name=".LevelTwo" />
+        <activity android:name=".LevelThree" />
+        <activity android:name=".Level3Activity" />
+        <activity android:name=".LevelEnd"></activity>
     </application>
 
 </manifest>

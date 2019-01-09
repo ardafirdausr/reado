@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -59,9 +60,13 @@ public class TextScannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_scanner);
 
+        Typeface typeface =  Typeface.createFromAsset(getAssets(), "font/FredokaOneRegular.ttf");
+
         cameraView = (SurfaceView) findViewById(R.id.svScanner);
         textView = (TextView) findViewById(R.id.txtScanned);
         btnStart = (Button) findViewById(R.id.btnStart);
+
+        textView.setTypeface(typeface);
 
         btnStart.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#17b5fc">
+    android:background="@drawable/bgapp">
 
     <SurfaceView
         android:id="@+id/svScanner"
@@ -36,7 +36,7 @@
     <Button
         android:id="@+id/btnStart"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:background="@drawable/btn_play_orange"
         android:contentDescription="@string/run_quiz"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"

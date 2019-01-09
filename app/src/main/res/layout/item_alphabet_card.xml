@@ -43,12 +43,13 @@
             android:layout_weight="4"
             android:background="@drawable/bg_rounded_corner1"
             android:gravity="center"
+            android:layout_gravity="center"
             android:isScrollContainer="true"
             android:padding="8dp"
             android:scrollbars="vertical"
             android:textAlignment="center"
-            android:textColor="#2696c8"
-            android:textSize="32sp" />
+            android:textColor="#332FA2"
+            android:textSize="150sp" />
 
         <TextView
             android:id="@+id/txtRead"
