@@ -62,7 +62,6 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
             public void onClick(View v) {
                 Intent toAlphabetActivity = new Intent(context, AlphabetActivity.class);
                 toAlphabetActivity.putExtra("word", word.trim());
-                Log.d("WWWWWW", "FROM WORDADAPTER-" + word + "-");
                 context.startActivity(toAlphabetActivity);
             }
         });

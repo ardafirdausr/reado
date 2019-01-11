@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btnRunQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), LevelOne.class));
+                startActivity(new Intent(getBaseContext(), LevelActivity.class));
             }
         });
     }

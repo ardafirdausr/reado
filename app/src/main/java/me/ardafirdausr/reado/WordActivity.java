@@ -27,7 +27,7 @@ public class WordActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             sentence = extras.getString("sentence").toUpperCase();
-            words = new ArrayList<>(Arrays.asList(sentence.split(" ")));
+            words = new ArrayList<>(Arrays.asList(sentence.split("\\s+")));
         }
         rvWords = (RecyclerView) findViewById(R.id.rv_words);
         rvWords.setAdapter(new WordAdapter(words));

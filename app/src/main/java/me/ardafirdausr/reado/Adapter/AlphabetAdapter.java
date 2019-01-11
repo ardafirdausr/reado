@@ -70,7 +70,7 @@ public class AlphabetAdapter extends  RecyclerView.Adapter<AlphabetAdapter.Alpha
         alphabetViewHolder.btnSound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tts.speak(pronounce, TextToSpeech.QUEUE_FLUSH, null, "reado!-" + alphabet);
+                tts.speak("" + alphabet, TextToSpeech.QUEUE_FLUSH, null, "reado!-" + alphabet);
             }
         });
     }

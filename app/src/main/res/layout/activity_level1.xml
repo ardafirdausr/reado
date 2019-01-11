@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bgapp"
+    android:background="@drawable/bg_app"
     tools:context=".Level1Activity">
 
     <TextView
@@ -45,7 +45,7 @@
     <ImageView
         android:id="@+id/imgGuess"
         android:layout_gravity="center"
-        android:src="@drawable/img_home"
+        android:src="@drawable/level_1_0"
         android:layout_marginTop="10dp"
         android:layout_width="280dp"
         android:layout_height="170dp" />

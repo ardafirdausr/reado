@@ -8,6 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -30,7 +31,9 @@
         <activity android:name=".LevelTwo" />
         <activity android:name=".LevelThree" />
         <activity android:name=".Level3Activity" />
-        <activity android:name=".LevelEnd"></activity>
+        <activity android:name=".LevelEnd" />
+        <activity android:name=".LevelActivity" />
+        <activity android:name=".StageActivity"></activity>
     </application>
 
 </manifest>

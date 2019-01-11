@@ -4,18 +4,13 @@
     <string name="get_words">Dapatkan Kata</string>
     <string name="run_quiz">Mulai Kuis</string>
     <string name="powered_by">Didukung Oleh</string>
-
-    <!--asset name-->
-    <string name="neptune">Neptune</string>
-    <string name="ferris_wheel">Ferris Wheel</string>
-    <string name="ballon">Ballon</string>
+    <string name="choose_level">Pilih Level!</string>
     <string name="choose_word">Pilih Kata!</string>
-    <string name="boom">Boom</string>
-    <string name="rides">Wahana</string>
-    <string name="logo">Logo</string>
-    <string name="sound">Suara</string>
 
-    <!--alphabet pronounciation-->
+    <!--Content Description-->
+    <string name="image_description">sebuah gambar</string>
+
+    <!--Alphabet Pronounciation-->
     <string-array name="alphabets">
         <item>a</item>
         <item>bé</item>
@@ -45,7 +40,7 @@
         <item>zét</item>
     </string-array>
 
-    <!--numeric pronounciation-->
+    <!--Numeric Pronounciation-->
     <string-array name="numerics">
         <item>nol</item>
         <item>satu</item>

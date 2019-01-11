@@ -35,7 +35,7 @@
         android:layout_marginBottom="32dp"
         android:background="@android:drawable/ic_lock_silent_mode_off"
         android:backgroundTint="#17b5fc"
-        android:contentDescription="@string/sound"
+        android:contentDescription="@string/image_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

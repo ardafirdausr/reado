@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -34,20 +35,19 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelViewHol
     public LevelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         this.context = parent.getContext();
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_level_card, parent, false);
-        itemView.getLayoutParams().width = (int) (parent.getMeasuredHeight() * 1);
-        itemView.requestLayout();
         return new LevelAdapter.LevelViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull LevelViewHolder viewHolder, int i) {
-        final String word = levels.get(i);
-        viewHolder.level.setText(word);
-        viewHolder.level.setOnClickListener(new View.OnClickListener(){
+        final String level = levels.get(i);
+        viewHolder.txtLevel.setText(level);
+        viewHolder.txtLevel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent toLevel1Activity = new Intent(context, Level1Activity.class);
-                context.startActivity(toLevel1Activity);
+                Toast.makeText(context, "" + level, Toast.LENGTH_SHORT).show();
+//                Intent toLevel1Activity = new Intent(context, Level1Activity.class);
+//                context.startActivity(toLevel1Activity);
             }
         });
     }
@@ -58,11 +58,12 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelViewHol
     }
 
     public class LevelViewHolder extends RecyclerView.ViewHolder {
-        public TextView level;
+
+        public TextView txtLevel;
 
         public LevelViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.level = (TextView) itemView.findViewById(R.id.txtLevel);
+            this.txtLevel = (TextView) itemView.findViewById(R.id.txtLevel);
         }
     }
 }

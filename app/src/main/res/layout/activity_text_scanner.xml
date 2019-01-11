@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgapp">
+    android:background="@drawable/bg_app">
 
     <SurfaceView
         android:id="@+id/svScanner"
@@ -49,7 +49,7 @@
         android:id="@+id/imageView7"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:contentDescription="@string/ballon"
+        android:contentDescription="@string/image_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img_balloon" />
