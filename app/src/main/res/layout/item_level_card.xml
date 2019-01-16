@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemLevel"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="72dp"
+    android:layout_height="72dp"
     app:layout_constraintWidth_percent="80">
+
+    <ImageView
+        android:id="@+id/imgLock"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:alpha="0.8"
+        android:contentDescription="@string/image_description"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_lock" />
+
+    <View
+        android:id="@+id/vLock"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.6"
+        android:background="@drawable/bg_rounded_corner2"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtLevel"
+        app:layout_constraintEnd_toEndOf="@+id/txtLevel"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txtLevel"
+        app:layout_constraintTop_toTopOf="@+id/txtLevel"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/txtLevel"
@@ -20,12 +50,12 @@
         android:scrollbars="vertical"
         android:textAlignment="center"
         android:textColor="#332FA2"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.100000024" />
 
 </android.support.constraint.ConstraintLayout>

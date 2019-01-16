@@ -4,14 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import me.ardafirdausr.reado.Adapter.WordAdapter;
+import me.ardafirdausr.reado.adapter.WordAdapter;
 
 public class WordActivity extends AppCompatActivity {
 

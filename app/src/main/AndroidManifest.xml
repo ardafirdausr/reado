@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="me.ardafirdausr.reado">
 
+    // SEMUA YANG DAPAT DI LIHAT DI SETTING HP
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -11,7 +13,8 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -24,16 +27,11 @@
         <activity android:name=".TextScannerActivity" />
         <activity android:name=".WordActivity" />
         <activity android:name=".AlphabetActivity" />
-        <activity android:name=".FunQuizActivity" />
-        <activity android:name=".Level1Activity" />
-        <activity android:name=".Level2Activity" />
-        <activity android:name=".LevelOne" />
-        <activity android:name=".LevelTwo" />
-        <activity android:name=".LevelThree" />
-        <activity android:name=".Level3Activity" />
-        <activity android:name=".LevelEnd" />
+        <activity android:name=".StageActivity" />
         <activity android:name=".LevelActivity" />
-        <activity android:name=".StageActivity"></activity>
+        <activity android:name=".QuizStageOneActivity" />
+        <activity android:name=".QuizStageTwoActivity" />
+        <activity android:name=".QuizStageThreeActivity"></activity>
     </application>
 
 </manifest>

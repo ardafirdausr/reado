@@ -2,13 +2,18 @@ package me.ardafirdausr.reado;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.media.audiofx.DynamicsProcessing;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         smalltobig = AnimationUtils.loadAnimation(this, R.anim.smalltobig);
-
         Typeface typeface =  Typeface.createFromAsset(getAssets(), "font/FredokaOneRegular.ttf");
 
         btnGetWords = (Button) findViewById(R.id.btnGetWords);
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         btnRunQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), LevelActivity.class));
+                startActivity(new Intent(getBaseContext(), StageActivity.class));
             }
         });
     }

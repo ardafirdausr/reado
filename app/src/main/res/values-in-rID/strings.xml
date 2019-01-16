@@ -6,9 +6,27 @@
     <string name="powered_by">Didukung Oleh</string>
     <string name="choose_level">Pilih Level!</string>
     <string name="choose_word">Pilih Kata!</string>
+    <string name="back_to_home">Kembali ke Halaman Utama</string>
+    <string name="_continue">Lanjut</string>
+    <string name="choose_stage">Pilih Tingkatan</string>
+    <string name="no_text">Tidak ada tulisan terdeteksi</string>
+    <string name="alphabet">Alphabet</string>
+
+    <!--Quiz-->
+    <string name="retry">Coba Lagi</string>
+    <string name="next">Lanjut</string>
+    <string name="listen">Dengarkan!</string>
+    <string name="watch">Lihat Video Berikut</string>
+    <string name="play">Mulai</string>
+    <string name="good_job">Bagus !</string>
+    <string name="finish_all">Kamu telah menyelesaikan semua kuis</string>
+    <string name="stage_1_desc">Tebak nama benda dalam Bahasa Indoensia!</string>
+    <string name="stage_2_desc">Tebak nama hewan dalam Bahasa Indonesia!</string>
+    <string name="stage_3_desc">Tebak nama sayur dalam Bahasa Indonesia!</string>
 
     <!--Content Description-->
     <string name="image_description">sebuah gambar</string>
+    <string name="some_text">sebuah text</string>
 
     <!--Alphabet Pronounciation-->
     <string-array name="alphabets">

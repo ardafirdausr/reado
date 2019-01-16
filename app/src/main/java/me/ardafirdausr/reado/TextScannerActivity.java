@@ -16,6 +16,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -65,15 +66,22 @@ public class TextScannerActivity extends AppCompatActivity {
         cameraView = (SurfaceView) findViewById(R.id.svScanner);
         textView = (TextView) findViewById(R.id.txtScanned);
         btnStart = (Button) findViewById(R.id.btnStart);
+        sentence = "";
 
         textView.setTypeface(typeface);
 
         btnStart.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent toWordActivity = new Intent(TextScannerActivity.this, WordActivity.class);
-                toWordActivity.putExtra("sentence", sentence);
-                startActivity(toWordActivity);
+                if(sentence.length() > 0){
+                    Intent toWordActivity = new Intent(TextScannerActivity.this, WordActivity.class);
+                    toWordActivity.putExtra("sentence", sentence);
+                    startActivity(toWordActivity);
+                }
+                else{
+                    Toast.makeText(TextScannerActivity.this, R.string.no_text, Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
