@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class StageActivity extends AppCompatActivity implements
 
         sharedPrefFile = getPackageName();
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        currentStage = mPreferences.getInt("currentStage",1);
         StagesHandler stagesHandler = new StagesHandler(this);
         stages = stagesHandler.getAllStages();
         stageCount = stages.size();
@@ -92,15 +94,6 @@ public class StageActivity extends AppCompatActivity implements
                 .build());
         rvStage.addOnItemChangedListener(this);
         rvStage.addScrollStateChangeListener(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // RESTART ADAPTER TO UNLCOK NEW LEVEL IF SHARED PREFERENCES UPDATED
-        rvStage.getAdapter().notifyDataSetChanged();
-        // MOVE SELECTION TO CURRENTSTAGE
-        currentStage = mPreferences.getInt("currentStage",1);
         if(currentStage <= stageCount) {
             rvStage.scrollToPosition(currentStage - 1);
         }
@@ -110,27 +103,26 @@ public class StageActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
         // MOVE TO NEW STAGE AND ALERT IT FINISH LAST STAGE
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
-            final int stage = bundle.getInt("stage");
-            bundle.remove("stage");
-            bundle.clear();
-            rvStage.scrollToPosition(stage - 2);
-            new android.os.Handler().postDelayed(
-                    new Runnable() {
-                        public void run() {
-                            if(stage <= stageCount){
-                                rvStage.smoothScrollToPosition(stage - 1);
+        if(getIntent().getExtras()!= null){
+            if(getIntent().getExtras().containsKey("stage")){
+                rvStage.scrollToPosition(getIntent().getExtras().getInt("stage") - 2);
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                if(getIntent().getExtras().getInt("stage") <= stageCount){
+                                    rvStage.smoothScrollToPosition(getIntent().getExtras().getInt("stage") - 1);
+                                }
+                                else{
+                                    new SweetAlertDialog(getBaseContext(), SweetAlertDialog.SUCCESS_TYPE)
+                                            .setTitleText(getResources().getString(R.string.good_job))
+                                            .setContentText(getResources().getString(R.string.finish_all))
+                                            .show();
+                                }
+                                getIntent().removeExtra("stage");
                             }
-                            else{
-                                new SweetAlertDialog(getBaseContext(), SweetAlertDialog.SUCCESS_TYPE)
-                                        .setTitleText(getResources().getString(R.string.good_job))
-                                        .setContentText(getResources().getString(R.string.finish_all))
-                                        .show();
-                            }
-                        }
-                    },
-                    300);
+                        },
+                        300);
+            }
         }
     }
 

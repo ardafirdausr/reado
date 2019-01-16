@@ -44,17 +44,12 @@ public class LevelActivity extends AppCompatActivity {
         rvLevel.setLayoutManager(new GridLayoutManager(this, 5));
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("WWWWW", "on RESUME LEVEL ACTIVITY");
-        rvLevel.getAdapter().notifyDataSetChanged();
-    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("WWWWW", "on START LEVEL ACTIVITY");
-        rvLevel.getAdapter().notifyDataSetChanged();
+        // ALWAYS REDRAW RECYCLE VIEW WHEN ACTIVITY STARTED, BCZ IDK HOW TO REDRAW RV
+        rvLevel.setAdapter(new LevelAdapter(this, stage, quizzes));
+        rvLevel.setLayoutManager(new GridLayoutManager(this, 5));
     }
 }
