@@ -10,14 +10,20 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.view.animation.FastOutLinearInInterpolator;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.widget.RecyclerView;
+import com.transitionseverywhere.*;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.transitionseverywhere.extra.Scale;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
@@ -77,6 +83,9 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.StageViewHol
         stageViewHolder.txtTitle.setTypeface(typeface);
         stageViewHolder.txtDescription.setText(stage.getDescription());
         stageViewHolder.txtDescription.setTypeface(typeface);
+        if(stage.getId() == currentStage){
+            stageViewHolder.txtDescription.setVisibility(View.VISIBLE);
+        }
         if(stage.getId() <= currentStage){
             stageViewHolder.vLock.setVisibility(View.GONE);
             stageViewHolder.imgLock.setVisibility(View.GONE);
@@ -100,9 +109,10 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.StageViewHol
     public class StageViewHolder extends RecyclerView.ViewHolder{
 
         View vLock;
-        ViewGroup itemStage;
+        ConstraintLayout itemStage;
         TextView txtTitle, txtDescription;
         ImageView imgStage, imgLock;
+        TransitionSet set;
 
         public StageViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -112,17 +122,23 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.StageViewHol
             txtDescription = (TextView) itemView.findViewById(R.id.txtDescription);
             vLock = (View) itemView.findViewById(R.id.vLock);
             imgLock = (ImageView) itemView.findViewById(R.id.imgLock);
+            set = new TransitionSet()
+                    .setDuration(250)
+                    .addTransition(new Scale(0.5f))
+                    .addTransition(new Fade())
+                    .setInterpolator(new FastOutLinearInInterpolator());
         }
 
         public void showText(){
-            txtTitle.startAnimation(smalltobig);
-            txtDescription.startAnimation(smalltobig);
+            TransitionManager.beginDelayedTransition(itemStage, set);
+            txtDescription.setVisibility(View.VISIBLE);
         }
 
         public void hideText(){
-            txtTitle.startAnimation(bigtosmall);
-            txtDescription.startAnimation(bigtosmall);
+            TransitionManager.beginDelayedTransition(itemStage, set);
+            txtDescription.setVisibility(View.INVISIBLE);
         }
+
     }
 }
 

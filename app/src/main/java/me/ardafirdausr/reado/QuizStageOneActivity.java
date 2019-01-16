@@ -7,9 +7,13 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.TransactionTooLargeException;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Transition;
+import android.transition.TransitionManager;
+import android.transition.TransitionValues;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -94,7 +98,8 @@ public class QuizStageOneActivity extends AppCompatActivity {
         }
     }
 
-    private void addView(LinearLayout viewParent, final char text, final EditText editText){
+    private void addView(final LinearLayout viewParent, final char text, final EditText editText){
+
         LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -116,18 +121,9 @@ public class QuizStageOneActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                    TransitionManager.beginDelayedTransition(viewParent);
                     editText.setText(editText.getText().toString() + text);
-                    textView.startAnimation(smallbigforth);
-                    textView.animate()
-                            .alpha(0)
-                            .setDuration(200)
-                            .setListener(new AnimatorListenerAdapter() {
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    super.onAnimationEnd(animation);
-                                    textView.setVisibility(View.GONE);
-                                }
-                            });
+                    textView.setVisibility(View.GONE);
                     counter++;
                     doValidate();
                 }

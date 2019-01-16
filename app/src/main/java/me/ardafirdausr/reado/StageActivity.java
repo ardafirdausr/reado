@@ -129,12 +129,12 @@ public class StageActivity extends AppCompatActivity implements
 
     @Override
     public void onScrollStart(@NonNull StageAdapter.StageViewHolder currentItemHolder, int adapterPosition) {
-//        currentItemHolder.hideText();
+        currentItemHolder.hideText();
     }
 
     @Override
     public void onScrollEnd(@NonNull StageAdapter.StageViewHolder currentItemHolder, int adapterPosition) {
-
+        currentItemHolder.showText();
     }
 
     @Override

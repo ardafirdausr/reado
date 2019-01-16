@@ -11,6 +11,7 @@ import android.speech.tts.TextToSpeech;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -109,7 +110,7 @@ public class QuizStageTwoActivity extends AppCompatActivity {
         });
     }
 
-    private void addView(LinearLayout viewParent, final char text, final EditText editText){
+    private void addView(final LinearLayout viewParent, final char text, final EditText editText){
         LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -131,18 +132,9 @@ public class QuizStageTwoActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(viewParent);
                 editText.setText(editText.getText().toString() + text);
-                textView.startAnimation(smallbigforth);
-                textView.animate()
-                        .alpha(0)
-                        .setDuration(200)
-                        .setListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                super.onAnimationEnd(animation);
-                                textView.setVisibility(View.GONE);
-                            }
-                        });
+                textView.setVisibility(View.GONE);
                 counter++;
                 doValidate();
             }
