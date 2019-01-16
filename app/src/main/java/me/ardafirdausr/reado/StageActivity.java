@@ -103,17 +103,18 @@ public class StageActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
         // MOVE TO NEW STAGE AND ALERT IT FINISH LAST STAGE
-        if(getIntent().getExtras()!= null){
-            if(getIntent().getExtras().containsKey("stage")){
-                rvStage.scrollToPosition(getIntent().getExtras().getInt("stage") - 2);
+        final Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            if(bundle.containsKey("stage")){
+                rvStage.scrollToPosition(bundle.getInt("stage") - 2);
                 new android.os.Handler().postDelayed(
                         new Runnable() {
                             public void run() {
-                                if(getIntent().getExtras().getInt("stage") <= stageCount){
-                                    rvStage.smoothScrollToPosition(getIntent().getExtras().getInt("stage") - 1);
+                                if(bundle.getInt("stage") <= stageCount){
+                                    rvStage.smoothScrollToPosition(bundle.getInt("stage") - 1);
                                 }
                                 else{
-                                    new SweetAlertDialog(getBaseContext(), SweetAlertDialog.SUCCESS_TYPE)
+                                    new SweetAlertDialog(StageActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                                             .setTitleText(getResources().getString(R.string.good_job))
                                             .setContentText(getResources().getString(R.string.finish_all))
                                             .show();
