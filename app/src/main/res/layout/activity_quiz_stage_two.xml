@@ -16,25 +16,29 @@
         android:layout_marginTop="45dp"
         android:text="@string/some_text"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bg_rounded_corner1"
-        android:orientation="vertical"
         android:gravity="center"
-        android:layout_width="240dp"
-        android:layout_height="80dp">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/textQuestion"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:lineSpacingExtra="6dp"
-            android:text="@string/stage_2_desc"
+            android:text="@string/stage_1_desc"
             android:textAlignment="center"
             android:textColor="#332FA2"
             android:textSize="20sp"
@@ -46,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:text="@string/listen"
         android:textColor="#FFF"
         android:textSize="18sp"
@@ -62,11 +66,13 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bg_rounded_corner1"
         android:clickable="false"
         android:focusable="false"
@@ -74,7 +80,19 @@
         android:inputType="text"
         android:padding="10dp"
         android:textColor="#332FA2"
-        android:textSize="32sp" />
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="#fff"
+        android:background="@drawable/bg_rounded_corner3"
+        android:textSize="12sp"
+        android:text="@string/reset" />
 
     <TextView
         android:id="@+id/textTitle"
@@ -88,15 +106,19 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/layoutParent"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_gravity="center"
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layoutParent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </LinearLayout>

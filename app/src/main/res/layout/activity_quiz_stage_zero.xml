@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_app"
-    tools:context=".QuizStageThreeActivity">
+    tools:context=".QuizStageTwoActivity">
 
     <TextView
         android:id="@+id/textScreen"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="45dp"
-        android:text="@string/some_text"
+        android:text="@string/training"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -24,7 +24,7 @@
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/bg_rounded_corner1"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:lineSpacingExtra="6dp"
-            android:text="@string/stage_3_desc"
+            android:text="@string/stage_1_desc"
             android:textAlignment="center"
             android:textColor="#332FA2"
             android:textSize="20sp"
@@ -47,21 +47,22 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"
-        android:textColor="#FFF"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:text="@string/watch"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/videoView"
-        android:layout_marginVertical="8dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_width="296dp"
-        android:layout_height="160dp" />
+        android:layout_marginTop="24dp"
+        android:text="@string/listen"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSound"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_sound_orange"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="105dp" />
 
     <EditText
         android:id="@+id/editText"
@@ -69,7 +70,7 @@
         android:layout_height="64dp"
         android:layout_gravity="center"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/bg_rounded_corner1"
@@ -92,30 +93,32 @@
         android:background="@drawable/bg_rounded_corner3"
         android:textSize="12sp"
         android:text="@string/reset" />
+
     <TextView
         android:id="@+id/textTitle"
-        android:text="@string/alphabet"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#FFF"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/alphabet"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
             android:id="@+id/layoutParent"
-            android:orientation="horizontal"
-            android:gravity="center"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
+            android:orientation="horizontal"
+            android:gravity="center"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </LinearLayout>
     </HorizontalScrollView>
+
 </LinearLayout>

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,19 +18,20 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 
 import me.ardafirdausr.reado.database.QuizzesHandler;
 import me.ardafirdausr.reado.database.StagesHandler;
+import me.ardafirdausr.reado.model.ArrayListWrapper;
 import me.ardafirdausr.reado.model.Quiz;
-import me.ardafirdausr.reado.util.AssetReader;
 
-public class QuizStageTwoActivity extends AppCompatActivity {
+public class QuizStageZeroActivity extends AppCompatActivity {
 
     private int counter, maxPresCounter;
     private Animation smallbigforth, smalltobig;
@@ -41,6 +41,7 @@ public class QuizStageTwoActivity extends AppCompatActivity {
     private EditText editText;
     private StagesHandler stagesHandler;
     private QuizzesHandler quizzesHandler;
+    private ArrayList<Quiz> quizzes;
     private Quiz quiz;
     private Typeface typeface;
     private TextToSpeech tts;
@@ -52,7 +53,21 @@ public class QuizStageTwoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_stage_two);
 
-        tts = new TextToSpeech(QuizStageTwoActivity.this, new TextToSpeech.OnInitListener() {
+        // GET DATA FROM INTENT
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            if(bundle.containsKey("quizzes")){
+                ArrayListWrapper<Quiz> quizzes = (ArrayListWrapper<Quiz>) bundle.getSerializable("quizzes");
+                this.quizzes = quizzes.getData();
+                this.quiz = this.quizzes.get(0);
+                this.quizzes.remove(0);
+            }
+            else{
+                finish();
+            }
+        }
+
+        tts = new TextToSpeech(QuizStageZeroActivity.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
@@ -60,19 +75,6 @@ public class QuizStageTwoActivity extends AppCompatActivity {
                 }
             }
         });
-
-        sharedPrefFile = getPackageName();
-        mSharedPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-        quizzesHandler = new QuizzesHandler(this);
-        stagesHandler = new StagesHandler(this);
-
-        // GET DATA FROM INTENT
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
-            int stage = bundle.getInt("stage");
-            int level = bundle.getInt("level");
-            quiz = quizzesHandler.getQuiz(stage, level);
-        }
 
         // CREATE ANIMATION
         smalltobig = AnimationUtils.loadAnimation(this, R.anim.smalltobig);
@@ -89,8 +91,6 @@ public class QuizStageTwoActivity extends AppCompatActivity {
         layoutParent = (LinearLayout) findViewById(R.id.layoutParent);
         editText = (EditText) (EditText) findViewById(R.id.editText);
         btnReset = (Button) findViewById(R.id.btnReset);
-
-        textScreen.setText("Level " + quiz.getStage() + " - " + quiz.getLevel());
 
         // SET TYPEFACE
         textQuestion.setTypeface(typeface);
@@ -162,28 +162,6 @@ public class QuizStageTwoActivity extends AppCompatActivity {
     private void doValidate(){
         if(editText.getText().toString().equals(quiz.getAnswere())) {
 
-            final int maxStage = stagesHandler.getStagesCount();
-            final int maxLevel = quizzesHandler.getQuizzesCountByStage(quiz.getStage());
-
-            // UPDATE SHARED PREFERENCES
-            int currentStage, currentLevel;
-            currentStage = mSharedPreferences.getInt("currentStage", 1);
-            currentLevel = mSharedPreferences.getInt("currentLevel", 1);
-            SharedPreferences.Editor sharedPreferencesEditor = mSharedPreferences.edit();
-            if(quiz.getStage() == currentStage && quiz.getLevel() == currentLevel){
-                if (currentLevel < maxLevel){
-                    sharedPreferencesEditor.putInt("currentLevel", quiz.getLevel() + 1);
-                }
-                else if(currentLevel == maxLevel){
-                    if(currentStage < maxStage){
-                        sharedPreferencesEditor.putInt("currentStage", currentStage + 1);
-                    }
-                    sharedPreferencesEditor.putInt("currentLevel", 1);
-                }
-            }
-
-            sharedPreferencesEditor.apply();
-
             // Remove linear
             layoutParent.animate()
                     .alpha(0)
@@ -201,19 +179,17 @@ public class QuizStageTwoActivity extends AppCompatActivity {
                     .setAction(R.string.next, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            int maxLevel = quizzesHandler.getQuizzesCountByStage(quiz.getStage());
-                            if(quiz.getLevel() == maxLevel){
-                                Intent toNextStage = new Intent(QuizStageTwoActivity.this, StageActivity.class);
-                                toNextStage.putExtra("stage", quiz.getStage() + 1);
-                                toNextStage.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(toNextStage);
+                            if(quizzes.size() > 0){
+                                Intent toNextQuiz = new Intent(QuizStageZeroActivity.this, QuizStageZeroActivity.class);
+                                toNextQuiz.putExtra("quizzes", new ArrayListWrapper<Quiz>(quizzes));
+                                startActivity(toNextQuiz);
                                 finish();
                             }
                             else{
-                                Intent toNextQuiz = new Intent(QuizStageTwoActivity.this, QuizStageTwoActivity.class);
-                                toNextQuiz.putExtra("stage", quiz.getStage());
-                                toNextQuiz.putExtra("level", quiz.getLevel() + 1);
-                                startActivity(toNextQuiz);
+                                Intent toNextStage = new Intent(QuizStageZeroActivity.this, StageActivity.class);
+                                toNextStage.putExtra("finishTrain", true);
+                                toNextStage.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(toNextStage);
                                 finish();
                             }
                         }

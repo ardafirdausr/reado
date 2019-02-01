@@ -50,7 +50,8 @@ public class StageActivity extends AppCompatActivity implements
         currentStage = mPreferences.getInt("currentStage",1);
         StagesHandler stagesHandler = new StagesHandler(this);
         stages = stagesHandler.getAllStages();
-        stageCount = stages.size();
+        // -1 because only 3 stages counted as stage. stage 0 is not counted
+        stageCount = stages.size() - 1;
 
         txtBackHome = (TextView) findViewById(R.id.btnBackHome);
         btnContinue = (Button) findViewById(R.id.btnContinue);
@@ -64,10 +65,8 @@ public class StageActivity extends AppCompatActivity implements
         btnContinue.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent;
-                int goToStage =  rvStage.getCurrentItem() + 1;
-                intent = new Intent(StageActivity.this, LevelActivity.class);
-                switch(rvStage.getCurrentItem() + 1){
+                Intent intent = new Intent(StageActivity.this, LevelActivity.class);
+                switch(rvStage.getCurrentItem()){
                     case 1:
                         intent.putExtra("stage", 1);
                         break;
@@ -80,7 +79,7 @@ public class StageActivity extends AppCompatActivity implements
                     default:
                         intent.putExtra("stage", 1);
                 }
-                if(rvStage.getCurrentItem() + 1 <= currentStage){
+                if(rvStage.getCurrentItem() <= currentStage){
                     startActivity(intent);
                 }
             }
@@ -94,8 +93,9 @@ public class StageActivity extends AppCompatActivity implements
                 .build());
         rvStage.addOnItemChangedListener(this);
         rvStage.addScrollStateChangeListener(this);
+        Log.d("WWWWW", "" + currentStage );
         if(currentStage <= stageCount) {
-            rvStage.scrollToPosition(currentStage - 1);
+            rvStage.scrollToPosition(currentStage);
         }
     }
 
@@ -105,19 +105,31 @@ public class StageActivity extends AppCompatActivity implements
         // MOVE TO NEW STAGE AND ALERT IT FINISH LAST STAGE
         final Bundle bundle = getIntent().getExtras();
         if(bundle != null){
-            if(bundle.containsKey("stage")){
-                rvStage.scrollToPosition(bundle.getInt("stage") - 2);
+            if(bundle.containsKey("finishTrain")){
+                getIntent().removeExtra("finishTrain");
+                rvStage.scrollToPosition(0);
+                new SweetAlertDialog(StageActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText(getResources().getString(R.string.good_job))
+                        .setContentText(getResources().getString(R.string.finish_all))
+                        .show();
+            }
+            else if(bundle.containsKey("stage")){
+                final int moveToStage = bundle.getInt("stage");
+                rvStage.scrollToPosition(bundle.getInt("stage") - 1);
                 new android.os.Handler().postDelayed(
                         new Runnable() {
                             public void run() {
-                                if(bundle.getInt("stage") <= stageCount){
-                                    rvStage.smoothScrollToPosition(bundle.getInt("stage") - 1);
+                                if(moveToStage <= stageCount){
+                                    rvStage.smoothScrollToPosition(moveToStage);
                                 }
                                 else{
                                     new SweetAlertDialog(StageActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                                             .setTitleText(getResources().getString(R.string.good_job))
                                             .setContentText(getResources().getString(R.string.finish_all))
                                             .show();
+                                    SharedPreferences.Editor sharedPreferencesEditor = mPreferences.edit();
+                                    sharedPreferencesEditor.putInt("currentStage", stageCount);
+                                    sharedPreferencesEditor.apply();
                                 }
                                 getIntent().removeExtra("stage");
                             }

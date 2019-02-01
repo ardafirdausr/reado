@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="me.ardafirdausr.reado">
 
-    // SEMUA YANG DAPAT DI LIHAT DI SETTING HP
+    <!-- SEMUA YANG DAPAT DI LIHAT DI SETTING HP -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,15 +26,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".TextScannerActivity" />
-        <activity android:name=".WordActivity" />
-        <activity android:name=".AlphabetActivity" />
-        <activity android:name=".StageActivity" />
-        <activity android:name=".LevelActivity" />
-        <activity android:name=".QuizStageOneActivity" />
-        <activity android:name=".QuizStageTwoActivity" />
-        <activity android:name=".QuizStageThreeActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TextScannerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlphabetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LevelActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizStageOneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizStageTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizStageThreeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".QuizStageZeroActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

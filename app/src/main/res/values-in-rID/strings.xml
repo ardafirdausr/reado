@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">READo</string>
-    <string name="get_words">Dapatkan Kata</string>
+    <string name="get_words">Scan Kata</string>
     <string name="run_quiz">Mulai Kuis</string>
     <string name="powered_by">Didukung Oleh</string>
     <string name="choose_level">Pilih Level!</string>
@@ -9,20 +9,27 @@
     <string name="back_to_home">Kembali ke Halaman Utama</string>
     <string name="_continue">Lanjut</string>
     <string name="choose_stage">Pilih Tingkatan</string>
-    <string name="no_text">Tidak ada tulisan terdeteksi</string>
+    <string name="no_text">Tidak ada text terdeteksi</string>
     <string name="alphabet">Alphabet</string>
+    <string name="video_play">Ayo Belajar!</string>
 
     <!--Quiz-->
+    <string name="wrong">Oops, salah!</string>
+    <string name="reset">Ulangi</string>
     <string name="retry">Coba Lagi</string>
+    <string name="correct">Benar!</string>
     <string name="next">Lanjut</string>
     <string name="listen">Dengarkan!</string>
     <string name="watch">Lihat Video Berikut</string>
     <string name="play">Mulai</string>
+    <string name="training">Latihan</string>
     <string name="good_job">Bagus !</string>
     <string name="finish_all">Kamu telah menyelesaikan semua kuis</string>
-    <string name="stage_1_desc">Tebak nama benda dalam Bahasa Indoensia!</string>
-    <string name="stage_2_desc">Tebak nama hewan dalam Bahasa Indonesia!</string>
-    <string name="stage_3_desc">Tebak nama sayur dalam Bahasa Indonesia!</string>
+    <string name="finish_exercise">Kamu telah menjawab semua pertanyaan</string>
+    <string name="stage_0_desc">Tebak kata</string>
+    <string name="stage_1_desc">Tebak nama benda berikut !</string>
+    <string name="stage_2_desc">Tebak nama hewan berikut!</string>
+    <string name="stage_3_desc">Tebak nama sayur berikut!</string>
 
     <!--Content Description-->
     <string name="image_description">sebuah gambar</string>

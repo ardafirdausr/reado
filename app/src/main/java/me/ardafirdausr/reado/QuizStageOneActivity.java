@@ -19,6 +19,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,6 +39,7 @@ public class QuizStageOneActivity extends AppCompatActivity {
     private int counter, maxPresCounter, stage, level;
     private Animation smallbigforth, smalltobig;
     private TextView textScreen, textQuestion, textTitle;
+    private Button btnReset;
     private ImageView imgGuess;
     private LinearLayout layoutParent;
     private EditText editText;
@@ -79,7 +81,8 @@ public class QuizStageOneActivity extends AppCompatActivity {
         textTitle = (TextView) findViewById(R.id.textTitle);
         imgGuess = (ImageView) findViewById(R.id.imgGuess);
         layoutParent = (LinearLayout) findViewById(R.id.layoutParent);
-        editText = (EditText) (EditText) findViewById(R.id.editText);
+        editText = (EditText) findViewById(R.id.editText);
+        btnReset = (Button) findViewById(R.id.btnReset);
 
         textScreen.setText("Level " + quiz.getStage() + " - " + quiz.getLevel());
         imgGuess.setImageDrawable(quizImage);
@@ -89,6 +92,8 @@ public class QuizStageOneActivity extends AppCompatActivity {
         textQuestion.setTypeface(typeface);
         textScreen.setTypeface(typeface);
         textTitle.setTypeface(typeface);
+        editText.setTypeface(typeface);
+        btnReset.setTypeface(typeface);
 
         // DEFINES ACTIVITY's FLOW
         maxPresCounter = quiz.getQuestion().length();
@@ -96,6 +101,18 @@ public class QuizStageOneActivity extends AppCompatActivity {
         for (char key : quiz.getQuestion().toCharArray()){
             addView(layoutParent, key, editText);
         }
+        btnReset.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                editText.setText("");
+                counter = 0;
+                layoutParent.removeAllViews();
+                quiz.setQuestion(shuffleString(quiz.getQuestion().toCharArray()));
+                for (char key : quiz.getQuestion().toCharArray()){
+                    addView(layoutParent, key, editText);
+                }
+            }
+        });
     }
 
     private void addView(final LinearLayout viewParent, final char text, final EditText editText){
@@ -170,11 +187,9 @@ public class QuizStageOneActivity extends AppCompatActivity {
                         }
                     });
             // GO TO NEXT QUESTION
-            String ho = mSharedPreferences.getInt("currentStage", 99) + "-" + mSharedPreferences.getInt("currentLevel", 99);
-            Log.d("WWWWW", this.getLocalClassName() + " == "+ ho);
             Snackbar snackbar = Snackbar
-                    .make(layoutParent, "Correct!", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("NEXT", new View.OnClickListener() {
+                    .make(layoutParent, R.string.correct, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(R.string.next, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             if(quiz.getLevel() == maxLevel){
@@ -203,8 +218,8 @@ public class QuizStageOneActivity extends AppCompatActivity {
         else if(maxPresCounter <= counter && !editText.getText().toString().equals(quiz.getAnswere())){
             // RETRY SNACKBAR
             Snackbar snackbar = Snackbar
-                    .make(layoutParent, "Whoops, wrong!", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("RETRY", new View.OnClickListener() {
+                    .make(layoutParent, R.string.wrong, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(R.string.retry, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             editText.setText("");

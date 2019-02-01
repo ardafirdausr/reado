@@ -32,6 +32,8 @@ public class QuizzesHandler extends SQLiteOpenHelper {
     private static final String KEY_QUESTION = "question";
     private static final String KEY_ANSWERE = "answere";
     private static final String KEY_MEDIA = "media";
+    private static final String KEY_TIME_START = "time_start";
+    private static final String KEY_DURATION = "duration";
 
     public QuizzesHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -64,7 +66,9 @@ public class QuizzesHandler extends SQLiteOpenHelper {
                 cursor.getInt(2),
                 cursor.getString(3),
                 cursor.getString(4),
-                cursor.getString(5)
+                cursor.getString(5),
+                cursor.getInt(6),
+                cursor.getInt(7)
         );
     }
 
@@ -85,7 +89,9 @@ public class QuizzesHandler extends SQLiteOpenHelper {
                     cursor.getInt(2),
                     cursor.getString(3),
                     cursor.getString(4),
-                    cursor.getString(5)
+                    cursor.getString(5),
+                    cursor.getInt(6),
+                    cursor.getInt(7)
             );
             quizzes.add(quiz);
             cursor.moveToNext();
@@ -102,5 +108,63 @@ public class QuizzesHandler extends SQLiteOpenHelper {
         Cursor cursor = mDatabase.rawQuery(query, null);
         cursor.moveToFirst();
         return cursor.getInt(0);
+    }
+
+    public ArrayList<Quiz> getRandomQuizzes(int stage, int total){
+        SQLiteDatabase mDatabase = getWritableDatabase();
+        ArrayList<Quiz> quizzes = new ArrayList<>();
+        Quiz quiz = null;
+        String language = Locale.getDefault().getLanguage();
+        String query = "SELECT * FROM " + TABLE_NAME + "_" + language +
+                " WHERE stage = " + stage + " ORDER BY RANDOM() LIMIT " + total;
+        Cursor cursor = mDatabase.rawQuery(query, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            quiz = new Quiz(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getInt(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getInt(6),
+                    cursor.getInt(7)
+            );
+            quizzes.add(quiz);
+            cursor.moveToNext();
+        }
+        return quizzes;
+    }
+
+    public void addQuiz(Quiz quiz){
+        SQLiteDatabase mDatabase = getWritableDatabase();
+        String language = Locale.getDefault().getLanguage();
+        String query = "INSERT INTO " + TABLE_NAME  + "_" + language + "(" +
+                    KEY_STAGE + ", " +
+                    KEY_LEVEL + ", " +
+                    KEY_QUESTION + ", " +
+                    KEY_ANSWERE + ", " +
+                    KEY_MEDIA + ", " +
+                    KEY_TIME_START + ", " +
+                    KEY_DURATION + ") " +
+                "VALUES (" +
+                    quiz.getStage() + ", " +
+                    quiz.getLevel() + ", " +
+                    "'" + quiz.getQuestion() + "', " +
+                    "'" + quiz.getAnswere() + "', " +
+                    "'"+ quiz.getMedia() + "', " +
+                    quiz.getTimeStart() + ", " +
+                    quiz.getDuration() +
+                ");";
+        mDatabase.execSQL(query);
+    }
+
+    public void addQuizzes(ArrayList<Quiz> quizzes){
+        SQLiteDatabase mDatabase = getWritableDatabase();
+        mDatabase.beginTransaction();
+        for(Quiz quiz: quizzes){
+               this.addQuiz(quiz);
+        }
+        mDatabase.endTransaction();
     }
 }

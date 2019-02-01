@@ -10,15 +10,22 @@
     <string name="choose_stage">Choose Stage</string>
     <string name="no_text">No Text Detected</string>
     <string name="alphabet">Alphabet</string>
+    <string name="video_play">Let\'s Learn Things!</string>
 
     <!--Quiz-->
+    <string name="wrong">Whops, wrong!</string>
+    <string name="reset">Reset</string>
     <string name="retry">Retry</string>
+    <string name="correct">Correct!</string>
     <string name="next">Next</string>
     <string name="listen">Listen!</string>
-    <string name="watch">Wath this video!</string>
+    <string name="watch">Watch this video!</string>
     <string name="play">Play</string>
+    <string name="training">Training</string>
     <string name="good_job">Good Job!</string>
-    <string name="finish_all">You have finished all quizzes</string>
+    <string name="finish_all">You have completed all quizzes</string>
+    <string name="finish_exercise">You have answered all questions</string>
+    <string name="stage_0_desc">Guess word</string>
     <string name="stage_1_desc">Guess Things in English Language!</string>
     <string name="stage_2_desc">Guess Animal in English Language!</string>
     <string name="stage_3_desc">Guess Vegetable in English Language!</string>
