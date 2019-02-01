@@ -51,7 +51,7 @@ public class QuizStageZeroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz_stage_two);
+        setContentView(R.layout.activity_quiz_stage_zero);
 
         // GET DATA FROM INTENT
         Bundle bundle = getIntent().getExtras();

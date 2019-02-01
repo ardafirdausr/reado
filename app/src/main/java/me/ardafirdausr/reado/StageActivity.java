@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.Pivot;
@@ -23,7 +24,10 @@ import java.util.ArrayList;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.ardafirdausr.reado.adapter.StageAdapter;
 import me.ardafirdausr.reado.database.DataBaseHelper;
+import me.ardafirdausr.reado.database.QuizzesHandler;
 import me.ardafirdausr.reado.database.StagesHandler;
+import me.ardafirdausr.reado.model.ArrayListWrapper;
+import me.ardafirdausr.reado.model.Quiz;
 import me.ardafirdausr.reado.model.Stage;
 
 public class StageActivity extends AppCompatActivity implements
@@ -37,7 +41,9 @@ public class StageActivity extends AppCompatActivity implements
     ArrayList<Stage> stages;
     SharedPreferences mPreferences;
     String sharedPrefFile;
-    int currentStage;
+    StagesHandler stagesHandler;
+    QuizzesHandler quizzesHandler;
+    int stageZeroQuizzesCount, currentStage;
 
 
     @Override
@@ -48,7 +54,9 @@ public class StageActivity extends AppCompatActivity implements
         sharedPrefFile = getPackageName();
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         currentStage = mPreferences.getInt("currentStage",1);
-        StagesHandler stagesHandler = new StagesHandler(this);
+        stagesHandler = new StagesHandler(this);
+        quizzesHandler = new QuizzesHandler(this);
+        stageZeroQuizzesCount = quizzesHandler.getQuizzesCountByStage(0);
         stages = stagesHandler.getAllStages();
         // -1 because only 3 stages counted as stage. stage 0 is not counted
         stageCount = stages.size() - 1;
@@ -67,6 +75,21 @@ public class StageActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 Intent intent = new Intent(StageActivity.this, LevelActivity.class);
                 switch(rvStage.getCurrentItem()){
+                    case 0:
+                        if(stageZeroQuizzesCount == 0){
+                            Toast.makeText(getBaseContext(), "No scanned words saved", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        else if(stageZeroQuizzesCount > 10){
+                            stageZeroQuizzesCount = 10;
+                        }
+                        ArrayListWrapper<Quiz> quizzes = new ArrayListWrapper<Quiz>(
+                                quizzesHandler.getRandomQuizzes(0, stageZeroQuizzesCount)
+                        );
+                        Intent toQuizStageZeroActivity = new Intent(StageActivity.this, QuizStageZeroActivity.class);
+                        toQuizStageZeroActivity.putExtra("quizzes", quizzes);
+                        startActivity(toQuizStageZeroActivity);
+                        break;
                     case 1:
                         intent.putExtra("stage", 1);
                         break;

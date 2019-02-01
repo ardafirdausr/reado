@@ -11,6 +11,11 @@
     <string name="no_text">No Text Detected</string>
     <string name="alphabet">Alphabet</string>
     <string name="video_play">Let\'s Learn Things!</string>
+    <string name="supported_by">Supported By</string>
+    <string name="about_us">About us</string>
+    <string name="about_this_app">About this App</string>
+    <string name="developed_by">Developed by</string>
+    <string name="special_credits">Special Credits</string>
 
     <!--Quiz-->
     <string name="wrong">Whops, wrong!</string>
@@ -29,6 +34,10 @@
     <string name="stage_1_desc">Guess Things in English Language!</string>
     <string name="stage_2_desc">Guess Animal in English Language!</string>
     <string name="stage_3_desc">Guess Vegetable in English Language!</string>
+
+    <string name="app_desc">
+            READo! is an application that able to detect alphabet and words in order to help kids to read and learn the alphabetical word that exists around them, available in English and Indonesia.
+    </string>
 
     <!--Content Description-->
     <string name="image_description">some image</string>

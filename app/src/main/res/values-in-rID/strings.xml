@@ -12,6 +12,11 @@
     <string name="no_text">Tidak ada text terdeteksi</string>
     <string name="alphabet">Alphabet</string>
     <string name="video_play">Ayo Belajar!</string>
+    <string name="supported_by">Didukung Oleh</string>
+    <string name="about_us">Tentang Kami</string>
+    <string name="about_this_app">Tentang Aplikasi Ini</string>
+    <string name="developed_by">Dikembangkan Oleh</string>
+    <string name="special_credits">Special credits</string>
 
     <!--Quiz-->
     <string name="wrong">Oops, salah!</string>
@@ -30,6 +35,10 @@
     <string name="stage_1_desc">Tebak nama benda berikut !</string>
     <string name="stage_2_desc">Tebak nama hewan berikut!</string>
     <string name="stage_3_desc">Tebak nama sayur berikut!</string>
+
+    <string name="app_desc">
+        READo! adalah aplikasi yang mampu mendeteksi alfabet dan kata-kata untuk membantu anak-anak membaca dan mempelajari kata alfabet yang ada di sekitar mereka, tersedia dalam bahasa Inggris dan Indonesia.
+    </string>
 
     <!--Content Description-->
     <string name="image_description">sebuah gambar</string>

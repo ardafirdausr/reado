@@ -10,11 +10,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnGetWords, btnRunQuiz, btnVideoPlay;
+    Button btnGetWords, btnRunQuiz, btnAbout;
     ImageView imgView2;
+    TextView txtSupportedBy;
     Animation smalltobig;
     private SharedPreferences mSharedPreferences;
     private String sharedPrefFile;
@@ -33,12 +37,22 @@ public class MainActivity extends AppCompatActivity {
 
         btnGetWords = (Button) findViewById(R.id.btnGetWords);
         btnRunQuiz = (Button) findViewById(R.id.btnRunQuiz);
+        btnAbout = (Button) findViewById(R.id.btnAbout);
+        txtSupportedBy = (TextView) findViewById(R.id.txtSupported);
         imgView2 = (ImageView) findViewById(R.id.imageView2);
         imgView2.startAnimation(smalltobig);
 
+
         btnGetWords.setTypeface(typeface);
         btnRunQuiz.setTypeface(typeface);
+        txtSupportedBy.setTypeface(typeface);
 
+        btnAbout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), AboutActivity.class));
+            }
+        });
         btnGetWords.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

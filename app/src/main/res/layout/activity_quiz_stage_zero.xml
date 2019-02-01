@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_app"
-    tools:context=".QuizStageTwoActivity">
+    tools:context=".QuizStageZeroActivity">
 
     <TextView
         android:id="@+id/textScreen"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:lineSpacingExtra="6dp"
-            android:text="@string/stage_1_desc"
+            android:text="@string/stage_0_desc"
             android:textAlignment="center"
             android:textColor="#332FA2"
             android:textSize="20sp"

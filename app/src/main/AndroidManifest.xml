@@ -53,8 +53,13 @@
         <activity
             android:name=".QuizStageThreeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".QuizStageZeroActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".QuizStageZeroActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".AppActivity" />
+        <activity android:name=".DeveloperActivity" />
+        <activity android:name=".CreditActivity"></activity>
     </application>
 
 </manifest>
